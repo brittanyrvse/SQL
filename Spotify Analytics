@@ -1,0 +1,43 @@
+#For this project, I downloaded Spotify's Top 50 data from Kaggle.
+#I then imported it into excel and I created a table.
+#Finally,I performed analytics on the data using SQL.
+
+#Creating the table: 
+CREATE TABLE BIT_DB.Spotifydata (
+id integer PRIMARY KEY,
+artist_name varchar NOT NULL,
+track_name varchar NOT NULL,
+track_id varchar NOT NULL,
+popularity integer NOT NULL,
+danceability decimal(4,3) NOT NULL,
+energy decimal(4,3) NOT NULL,
+key integer NOT NULL,
+loudness decimal(5,3) NOT NULL,
+mode integer NOT NULL,
+speechiness decimal(5,4) NOT NULL,
+acousticness decimal(6,5) NOT NULL,
+instrumentalness text NOT NULL,
+liveness decimal(5,4) NOT NULL,
+valence decimal(4,3) NOT NULL,
+tempo decimal(6,3) NOT NULL,
+duration_ms integer NOT NULL,
+time_signature integer NOT NULL 
+)
+
+#Then I imported the Spotify data .csv into SQLite 
+
+#Finally, I explored the data using SQL
+
+/*First, I discovered how many tracks from each artist made it into the top 50*/
+SELECT COUNT(track_name), artist_name
+FROM BIT_DB.Spotifydata
+GROUP BY artist_name
+ORDER BY COUNT(track_name) DESC;
+
+/*Then, I ran a query to see if there was a correlation between a track's energy and danceability and whether they were popular because of those factors*/
+SELECT artist_name, track_name,
+AVG(popularity),
+AVG(energy),
+AVG(danceability)
+FROM BIT_DB.Spotifydata
+GROUP BY artist_name, track_name;
