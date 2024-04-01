@@ -30,22 +30,28 @@ VALUES
 #Use a select statement to order items by price descending
 SELECT 
     SUM(item_id), price
-    FROM superstore
-    GROUP BY price DESC;
+FROM 
+	superstore
+GROUP 
+	BY price DESC;
 
 #Show a statistic about the lowest rated item
 SELECT 
 	item_name, MIN(average_rating), price
-    FROM superstore;
+FROM 
+	superstore;
 
 #Show a statistic about 'Kitchen Supplies'
 SELECT 
     COUNT('Kitchen Supplies') 
-    FROM superstore
-    WHERE price > 89.99
+FROM 
+	superstore
+WHERE 
+	price > 89.99;
 
 #Show a statistic about 'Appliances' 
 
 SELECT 
     AVG('Appliances'), average_rating
-    FROM superstore
+FROM 
+	superstore;
