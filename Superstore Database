@@ -27,20 +27,25 @@ VALUES
     (14, 'Cutlery Set', 'Kitchen Supplies', 34.50, 40, 4.4),
     (15, 'Cozy Throw Blanket', 'Furnishings', 24.99, 100, 4.2);
 
-#Use a select statement to order items by price
-SELECT *
-FROM superstore
-ORDER BY price;
+#Use a select statement to order items by price descending
+SELECT 
+    SUM(item_id), price
+    FROM superstore
+    GROUP BY price DESC;
 
-#Show a statistic about the price of items
-SELECT SUM(price), item_name
-FROM superstore;
+#Show a statistic about the lowest rated item
+SELECT 
+	item_name, MIN(average_rating), price
+    FROM superstore;
 
 #Show a statistic about 'Kitchen Supplies'
-SELECT COUNT('Kitchen Supplies') 
-FROM superstore
-WHERE price > 89.99
+SELECT 
+    COUNT('Kitchen Supplies') 
+    FROM superstore
+    WHERE price > 89.99
 
 #Show a statistic about 'Appliances' 
-SELECT AVG('Appliances'), average_rating
-FROM superstore
+
+SELECT 
+    AVG('Appliances'), average_rating
+    FROM superstore
