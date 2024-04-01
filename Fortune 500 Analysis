@@ -61,37 +61,58 @@ VALUES
 #Analysis
 
 #Which companies from the Fortune 500 list are within the Technology industry? 
-SELECT company_name
-FROM fortune_companies
-WHERE industry = "Technology";
+SELECT 
+    company_name
+FROM 
+    fortune_companies
+WHERE 
+    industry = "Technology";
 
 #Which companies from the Fortune 500 list provide more than 14 weeks of maternity leave?
-SELECT company_name, AVG(maternity_leave_weeks)
-FROM fortune_companies
-WHERE maternity_leave_weeks >14
+SELECT
+    company_name, AVG(maternity_leave_weeks)
+FROM 
+    fortune_companies
+WHERE 
+    maternity_leave_weeks >14;
 
 #Which companies from the Fortune 500 list are within the Technology industry and have more than 20 paid time off days as well as an average of at least 5 or more employee tenure?
-SELECT * FROM fortune_companies
-WHERE industry = 'Technology' AND paid_time_off_days >20
-AND avg_employee_tenure >=5
+SELECT * 
+FROM 
+    fortune_companies
+WHERE 
+    industry = 'Technology' 
+AND 
+    paid_time_off_days >20
+AND
+    avg_employee_tenure >=5;
 
 #What is the minimum revenue from the Fortune 500 list?
-SELECT MIN(revenue) AS minrevenue
-FROM fortune_companies;
+SELECT 
+    MIN(revenue) AS minrevenue
+FROM 
+    fortune_companies;
 
 #Assign a list of the quantity of employees from Fortune 500 companies
-SELECT employees, company_name,
+SELECT 
+    employees, company_name,
 CASE
     WHEN employees > 70000 THEN 'The quantity is greater than 70000'
     WHEN employees = 70000 THEN 'The quantity is 70000'
     ELSE 'The quantity is under 70000'
-END AS employeesText
-FROM fortune_companies;
+END AS 
+    employeesText
+FROM 
+    fortune_companies;
 
 #Which industries from the Fortune 500 list provide health care benefits?
-SELECT industry, AVG(healthcare_benefits) as health_benefits
-FROM fortune_companies
-GROUP BY industry
-HAVING health_benefits>=1
+SELECT 
+    industry, AVG(healthcare_benefits) as health_benefits
+FROM 
+    fortune_companies
+GROUP BY 
+    industry
+HAVING
+    health_benefits>=1;
 
 
